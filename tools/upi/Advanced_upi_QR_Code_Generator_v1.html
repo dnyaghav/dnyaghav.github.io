@@ -42,23 +42,22 @@
 
     .qr-wrap {
       min-height: 320px;
-      max-height: 500px;        /* cap preview area */
-      max-width: 100%;          /* responsive */
+      max-height: 500px;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;         /* prevent oversized canvases */
+      overflow: hidden;
       background: #0b1024;
       border-radius: 1rem;
     }
 
-    /* ensure QR canvas/SVG scales to fit preview */
     .qr-wrap canvas,
     .qr-wrap svg {
+      width: 100% !important;
+      height: auto !important;
       max-width: 100%;
       max-height: 100%;
-      height: auto;
-      width: auto;
     }
 
     .footer-note { font-size: .85rem; opacity: .8; }
@@ -71,15 +70,16 @@
 <body>
   <div class="container py-4 py-md-5">
     <div class="row g-4">
+      <!-- Left Side Form -->
       <div class="col-lg-5">
         <div class="card bg-dark text-light">
           <div class="card-header">
-            <h1 class="h4 mb-0">Advanced QR Code Generator</h1>
+            <h1 class="h4 mb-0">Advanced UPI QR Code Generator</h1>
           </div>
           <div class="card-body">
             <div class="mb-3">
               <label for="qrText" class="form-label">Text / URL</label>
-              <textarea id="qrText" class="form-control" rows="3" placeholder="Type the content to encode...">https://example.com</textarea>
+              <textarea id="qrText" class="form-control" rows="3" placeholder="Type the content to encode...">upi://pay?pa=dny@upi</textarea>
             </div>
 
             <div class="row g-3">
@@ -197,6 +197,7 @@
         </div>
       </div>
 
+      <!-- Right Side Preview -->
       <div class="col-lg-7">
         <div class="card bg-dark text-light h-100">
           <div class="card-header d-flex align-items-center justify-content-between">
@@ -214,8 +215,8 @@
     </div>
   </div>
 
+  <!-- Script -->
   <script>
-    // --- Helpers ---
     const $ = (sel) => document.querySelector(sel);
     const textEl = $('#qrText');
     const sizeEl = $('#size');
@@ -235,7 +236,6 @@
     const sizeVal = $('#sizeVal');
     const marginVal = $('#marginVal');
     const logoSizeVal = $('#logoSizeVal');
-
     const wrap = $('#qrWrap');
 
     function dataUrlFromFile(file) {
@@ -250,59 +250,29 @@
     function randItem(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
     function randHex(){ return '#'+Math.floor(Math.random()*0xffffff).toString(16).padStart(6,'0'); }
 
-    // --- QR Code Styling instance ---
     let currentLogoDataUrl = null;
     const qr = new QRCodeStyling({
       width: parseInt(sizeEl.value, 10),
       height: parseInt(sizeEl.value, 10),
-      type: 'canvas', // can export to any format later
+      type: 'canvas',
       data: textEl.value,
       margin: parseInt(marginEl.value, 10),
-      qrOptions: {
-        errorCorrectionLevel: eccEl.value,
-        mode: 'Byte',
-        version: 0
-      },
-      imageOptions: {
-        saveAsBlob: false,
-        crossOrigin: 'anonymous',
-        margin: 0,
-      },
+      qrOptions: { errorCorrectionLevel: eccEl.value, mode: 'Byte' },
       image: currentLogoDataUrl,
-      dotsOptions: {
-        type: dotsStyleEl.value,
-        color: fgEl.value
-      },
-      backgroundOptions: {
-        color: bgEl.value
-      },
-      cornersSquareOptions: {
-        type: cornersStyleEl.value,
-        color: fgEl.value
-      },
-      cornersDotOptions: {
-        color: fgEl.value
-      }
+      dotsOptions: { type: dotsStyleEl.value, color: fgEl.value },
+      backgroundOptions: { color: bgEl.value },
+      cornersSquareOptions: { type: cornersStyleEl.value, color: fgEl.value },
+      cornersDotOptions: { color: fgEl.value }
     });
-
     qr.append(wrap);
 
     async function updateQR() {
       const size = parseInt(sizeEl.value, 10);
       const margin = parseInt(marginEl.value, 10);
-      const ecc = eccEl.value;
-      const fg = fgEl.value;
-      const bg = bgEl.value;
-      const dotsType = dotsStyleEl.value;
-      const cornersType = cornersStyleEl.value;
 
-      const image = currentLogoDataUrl || undefined;
-      const imageSizeRatio = parseInt(logoSizeEl.value, 10) / 100; // 0.1 - 0.4
-
-      // If logo background is toggled, wrap the logo with a white rounded rect using an offscreen canvas
-      let finalImage = image;
-      if (image && logoBgEl.checked) {
-        finalImage = await addWhitePaddingToImage(image, size, imageSizeRatio);
+      let finalImage = currentLogoDataUrl || undefined;
+      if (finalImage && logoBgEl.checked) {
+        finalImage = await addWhitePaddingToImage(finalImage, size, parseInt(logoSizeEl.value, 10) / 100);
       }
 
       qr.update({
@@ -310,14 +280,20 @@
         height: size,
         data: textEl.value,
         margin,
-        qrOptions: { errorCorrectionLevel: ecc, mode: 'Byte' },
+        qrOptions: { errorCorrectionLevel: eccEl.value, mode: 'Byte' },
         image: finalImage,
-        imageOptions: { imageSize: imageSizeRatio },
-        dotsOptions: { type: dotsType, color: fg },
-        backgroundOptions: { color: bg },
-        cornersSquareOptions: { type: cornersType, color: fg },
-        cornersDotOptions: { color: fg }
+        imageOptions: { imageSize: parseInt(logoSizeEl.value, 10) / 100 },
+        dotsOptions: { type: dotsStyleEl.value, color: fgEl.value },
+        backgroundOptions: { color: bgEl.value },
+        cornersSquareOptions: { type: cornersStyleEl.value, color: fgEl.value },
+        cornersDotOptions: { color: fgEl.value }
       });
+
+      const canvas = wrap.querySelector("canvas, svg");
+      if (canvas) {
+        canvas.style.width = "100%";
+        canvas.style.height = "auto";
+      }
     }
 
     async function addWhitePaddingToImage(srcDataUrl, qrSize, ratio) {
@@ -330,14 +306,10 @@
           canvas.width = logoSize + pad*2;
           canvas.height = logoSize + pad*2;
           const ctx = canvas.getContext('2d');
-
-          // rounded rect background
           const r = Math.floor((logoSize + pad*2) * 0.18);
           roundRect(ctx, 0, 0, canvas.width, canvas.height, r);
           ctx.fillStyle = '#ffffff';
           ctx.fill();
-
-          // draw logo centered
           ctx.drawImage(img, pad, pad, logoSize, logoSize);
           resolve(canvas.toDataURL());
         };
@@ -358,10 +330,8 @@
     }
 
     function debounce(fn, ms){ let t; return (...args)=>{ clearTimeout(t); t = setTimeout(()=>fn.apply(this,args), ms); }; }
-
     const debouncedUpdate = debounce(updateQR, 120);
 
-    // --- Event bindings ---
     [textEl, sizeEl, marginEl, eccEl, encodingEl, fgEl, bgEl, dotsStyleEl, cornersStyleEl, logoSizeEl, logoBgEl].forEach(el => {
       el.addEventListener('input', (e) => {
         if (e.target === sizeEl) sizeVal.textContent = sizeEl.value;
@@ -385,14 +355,13 @@
 
     $('#btnDownload').addEventListener('click', async (e)=>{
       e.preventDefault();
-      const format = formatEl.value; // png, jpeg, webp, svg
+      const format = formatEl.value;
       const name = (filenameEl.value || 'qr-code').replace(/\s+/g,'-');
       await qr.download({ name, extension: format });
     });
 
     $('#btnCopy').addEventListener('click', async (e)=>{
       e.preventDefault();
-      // Export to PNG blob and copy to clipboard
       const blob = await qr.getRawData('png');
       if (navigator.clipboard && 'write' in navigator.clipboard) {
         await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
@@ -404,49 +373,43 @@
 
     $('#btnReset').addEventListener('click', (e)=>{
       e.preventDefault();
-      textEl.value = 'https://example.com';
-      sizeEl.value = 320; sizeVal.textContent = '320';
-      marginEl.value = 8; marginVal.textContent = '8';
-      eccEl.value = 'M';
-      encodingEl.value = 'UTF-8';
-      fgEl.value = '#111827';
-      bgEl.value = '#ffffff';
-      dotsStyleEl.value = 'square';
-      cornersStyleEl.value = 'extra-rounded';
-      logoInputEl.value = '';
-      logoSizeEl.value = 20; logoSizeVal.textContent = '20';
-      logoBgEl.checked = false;
+      textEl.value = "upi://pay?pa=dny@upi";
+      sizeEl.value = 320; sizeVal.textContent = "320";
+      marginEl.value = 8; marginVal.textContent = "8";
+      eccEl.value = "M"; encodingEl.value = "UTF-8";
+      fgEl.value = "#111827"; bgEl.value = "#ffffff";
+      dotsStyleEl.value = "square"; cornersStyleEl.value = "extra-rounded";
+      logoInputEl.value = ""; logoSizeEl.value = 20; logoSizeVal.textContent = "20";
+      logoBgEl.checked = false; formatEl.value = "png"; filenameEl.value = "qr-code";
       currentLogoDataUrl = null;
-      formatEl.value = 'png';
-      filenameEl.value = 'qr-code';
       updateQR();
     });
 
-    $('#btnInvert').addEventListener('click', ()=>{
-      const oldBg = bgEl.value; bgEl.value = fgEl.value; fgEl.value = oldBg; updateQR();
+    $('#btnInvert').addEventListener('click', (e)=>{
+      e.preventDefault();
+      const f = fgEl.value, b = bgEl.value;
+      fgEl.value = b; bgEl.value = f;
+      updateQR();
     });
 
-    $('#btnRandom').addEventListener('click', ()=>{
-      fgEl.value = randHex();
-      bgEl.value = randHex();
+    $('#btnRandom').addEventListener('click', (e)=>{
+      e.preventDefault();
+      fgEl.value = randHex(); bgEl.value = randHex();
       dotsStyleEl.value = randItem(['square','dots','rounded','extra-rounded','classy']);
       cornersStyleEl.value = randItem(['square','extra-rounded']);
-      eccEl.value = randItem(['L','M','Q','H']);
       updateQR();
     });
 
-    function toast(msg){
-      const el = document.createElement('div');
-      el.className = 'position-fixed top-0 start-50 translate-middle-x mt-3 z-3';
-      el.innerHTML = `<div class="alert alert-success shadow" role="alert">${msg}</div>`;
-      document.body.appendChild(el);
-      setTimeout(()=> el.remove(), 1600);
-    }
-
-    // Initial render
     updateQR();
-  </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    function toast(msg){
+      const div = document.createElement('div');
+      div.className = 'toast align-items-center text-bg-dark border-0 show position-fixed bottom-0 end-0 m-3';
+      div.setAttribute('role','alert');
+      div.innerHTML = `<div class="d-flex"><div class="toast-body">${msg}</div></div>`;
+      document.body.appendChild(div);
+      setTimeout(()=>div.remove(),2000);
+    }
+  </script>
 </body>
 </html>
