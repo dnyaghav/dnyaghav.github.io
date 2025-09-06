@@ -26,7 +26,7 @@ Check out my personal site and handy web tools:
 ## 🎬 Connect With Me
 
 - [YouTube: @dnyaghav](https://www.youtube.com/@dnyaghav)
-- [Instagram: @mraghav](https://instagram.com/mraghav)
+- [Instagram: @mraghav](https://instagram.com/mr.aghav)
 - [Portfolio & Projects](https://dnyaghav.github.io/tools/upi/)
 
 ## 🏊 Fun Fact
