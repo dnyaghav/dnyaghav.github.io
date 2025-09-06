@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://dnyaghav.github.io/sitemap.xml
