@@ -1,0 +1,15 @@
+
+07-09-2025  17:09             3,108 bajaj.webp
+07-09-2025  17:07             1,686 bharatpay.webp
+07-09-2025  17:06             1,094 bhim.webp
+07-09-2025  17:07               600 cred.webp
+07-09-2025  17:08               448 fimoney.webp
+07-09-2025  17:07               738 freecharge.webp
+07-09-2025  17:06             2,064 gpay.webp
+07-09-2025  17:08               736 jupitor.webp
+07-09-2025  17:08             1,388 mobikwik.webp
+07-09-2025  17:09             1,038 onecard.webp
+07-09-2025  17:06             1,414 paytm.webp
+07-09-2025  17:08             2,152 payzapp.webp
+07-09-2025  17:05               682 phonepe.webp
+07-09-2025  17:10               570 supermoney.webp
