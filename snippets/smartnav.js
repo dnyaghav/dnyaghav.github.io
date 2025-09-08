@@ -1,12 +1,5 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
-<script>
 (function() {
-  // create nav container
-  const nav = document.createElement("div");
-  nav.id = "smartNav";
-  document.body.appendChild(nav);
-
-  // style (injected so no CSS needed)
+  // --- Inject Styles ---
   const style = document.createElement("style");
   style.textContent = `
     #smartNav {
@@ -40,10 +33,18 @@
       background: #ff9800;
       transform: scale(1.1);
     }
+    #smartNav a.active {
+      background: #2196f3;
+    }
   `;
   document.head.appendChild(style);
 
-  // icon mapping
+  // --- Create Container ---
+  const nav = document.createElement("div");
+  nav.id = "smartNav";
+  document.body.appendChild(nav);
+
+  // --- Icon Map ---
   const iconMap = {
     home: "fa-house",
     about: "fa-user",
@@ -54,8 +55,17 @@
     default: "fa-circle"
   };
 
-  // collect links
+  // --- Ensure FontAwesome is Loaded ---
+  if (!document.querySelector('script[src*="fontawesome"]')) {
+    const fa = document.createElement("script");
+    fa.src = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js";
+    document.head.appendChild(fa);
+  }
+
+  // --- Build Navigation ---
   const links = document.querySelectorAll("a[href]");
+  const currentURL = window.location.pathname.toLowerCase();
+
   links.forEach(link => {
     const url = link.getAttribute("href");
     const text = (link.textContent || "").trim().toLowerCase();
@@ -71,7 +81,12 @@
     const navLink = document.createElement("a");
     navLink.href = url;
     navLink.innerHTML = `<i class="fa ${icon}"></i>`;
+
+    // highlight active link
+    if (currentURL.endsWith(url.toLowerCase()) || currentURL.includes(url.toLowerCase())) {
+      navLink.classList.add("active");
+    }
+
     nav.appendChild(navLink);
   });
 })();
-</script>
