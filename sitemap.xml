@@ -1,40 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://dnyaghav.github.io/</loc>
-    <priority>1.0</priority>
-    <changefreq>weekly</changefreq>
   </url>
-
   <url>
     <loc>https://dnyaghav.github.io/tools/</loc>
-    <priority>0.9</priority>
-    <changefreq>weekly</changefreq>
   </url>
-
   <url>
     <loc>https://dnyaghav.github.io/tools/qr/index.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://dnyaghav.github.io/tools/upi/index.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://dnyaghav.github.io/tools/ext/unfollower/index.html</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://dnyaghav.github.io/tools/ext/unsubscriber/index.html</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
   </url>
-
 </urlset>
