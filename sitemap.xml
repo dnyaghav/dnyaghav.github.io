@@ -1,4 +1,211 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Sitemap File for Google</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 40px auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .header h1 {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+        .code-container {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 15px;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+        .tag {
+            color: #e2777a;
+        }
+        .attr {
+            color: #9cdcfe;
+        }
+        .value {
+            color: #ce9178;
+        }
+        .comment {
+            color: #6a9955;
+        }
+        .content {
+            color: #d4d4d4;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .btn-download {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .btn-download:hover {
+            background: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .btn-download i {
+            margin-right: 8px;
+        }
+        .instructions {
+            background: #e8f4f8;
+            border-left: 4px solid #4285f4;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 25px 0;
+        }
+        .instructions h4 {
+            color: #0c5460;
+            margin-bottom: 15px;
+        }
+        .instructions ol {
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-sitemap"></i> XML Sitemap File</h1>
+            <p>Ready to submit to Google Search Console</p>
+        </div>
+
+        <div class="code-container">
+            <div class="code-content">
+                <span class="tag">&lt;?xml</span> <span class="attr">version</span>=<span class="value">"1.0"</span> <span class="attr">encoding</span>=<span class="value">"UTF-8"</span><span class="tag">?&gt;</span><br>
+                <span class="comment">&lt;!-- Sitemap for dnyaghav.github.io --&gt;</span><br>
+                <span class="tag">&lt;urlset</span> <span class="attr">xmlns</span>=<span class="value">"http://www.sitemaps.org/schemas/sitemap/0.9"</span><span class="tag">&gt;</span><br>
+                <br>
+                <span class="comment">&nbsp; &lt;!-- Homepage --&gt;</span><br>
+                <span class="tag">&nbsp; &lt;url&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;loc&gt;</span><span class="content">https://dnyaghav.github.io/</span><span class="tag">&lt;/loc&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;lastmod&gt;</span><span class="content">2025-09-05</span><span class="tag">&lt;/lastmod&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;changefreq&gt;</span><span class="content">daily</span><span class="tag">&lt;/changefreq&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;priority&gt;</span><span class="content">1.0</span><span class="tag">&lt;/priority&gt;</span><br>
+                <span class="tag">&nbsp; &lt;/url&gt;</span><br>
+                <br>
+                <span class="comment">&nbsp; &lt;!-- Tools Index --&gt;</span><br>
+                <span class="tag">&nbsp; &lt;url&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;loc&gt;</span><span class="content">https://dnyaghav.github.io/tools/</span><span class="tag">&lt;/loc&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;lastmod&gt;</span><span class="content">2025-09-05</span><span class="tag">&lt;/lastmod&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;changefreq&gt;</span><span class="content">weekly</span><span class="tag">&lt;/changefreq&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;priority&gt;</span><span class="content">0.9</span><span class="tag">&lt;/priority&gt;</span><br>
+                <span class="tag">&nbsp; &lt;/url&gt;</span><br>
+                <br>
+                <span class="comment">&nbsp; &lt;!-- QR Code Maker --&gt;</span><br>
+                <span class="tag">&nbsp; &lt;url&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;loc&gt;</span><span class="content">https://dnyaghav.github.io/tools/qr/index.html</span><span class="tag">&lt;/loc&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;lastmod&gt;</span><span class="content">2025-09-05</span><span class="tag">&lt;/lastmod&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;changefreq&gt;</span><span class="content">weekly</span><span class="tag">&lt;/changefreq&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;priority&gt;</span><span class="content">0.9</span><span class="tag">&lt;/priority&gt;</span><br>
+                <span class="tag">&nbsp; &lt;/url&gt;</span><br>
+                <br>
+                <span class="comment">&nbsp; &lt;!-- UPI to QR --&gt;</span><br>
+                <span class="tag">&nbsp; &lt;url&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;loc&gt;</span><span class="content">https://dnyaghav.github.io/tools/upi/index.html</span><span class="tag">&lt;/loc&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;lastmod&gt;</span><span class="content">2025-09-05</span><span class="tag">&lt;/lastmod&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;changefreq&gt;</span><span class="content">weekly</span><span class="tag">&lt;/changefreq&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;priority&gt;</span><span class="content">0.9</span><span class="tag">&lt;/priority&gt;</span><br>
+                <span class="tag">&nbsp; &lt;/url&gt;</span><br>
+                <br>
+                <span class="comment">&nbsp; &lt;!-- Instagram Unfollower Extension --&gt;</span><br>
+                <span class="tag">&nbsp; &lt;url&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;loc&gt;</span><span class="content">https://dnyaghav.github.io/tools/ext/unfollower/index.html</span><span class="tag">&lt;/loc&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;lastmod&gt;</span><span class="content">2025-09-05</span><span class="tag">&lt;/lastmod&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;changefreq&gt;</span><span class="content">monthly</span><span class="tag">&lt;/changefreq&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;priority&gt;</span><span class="content">0.8</span><span class="tag">&lt;/priority&gt;</span><br>
+                <span class="tag">&nbsp; &lt;/url&gt;</span><br>
+                <br>
+                <span class="comment">&nbsp; &lt;!-- Unsubscriber Extension --&gt;</span><br>
+                <span class="tag">&nbsp; &lt;url&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;loc&gt;</span><span class="content">https://dnyaghav.github.io/tools/ext/unsubscriber/index.html</span><span class="tag">&lt;/loc&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;lastmod&gt;</span><span class="content">2025-09-05</span><span class="tag">&lt;/lastmod&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;changefreq&gt;</span><span class="content">monthly</span><span class="tag">&lt;/changefreq&gt;</span><br>
+                <span class="tag">&nbsp; &nbsp; &lt;priority&gt;</span><span class="content">0.8</span><span class="tag">&lt;/priority&gt;</span><br>
+                <span class="tag">&nbsp; &lt;/url&gt;</span><br>
+                <br>
+                <span class="tag">&lt;/urlset&gt;</span>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button id="downloadBtn" class="btn-download">
+                <i class="fas fa-download"></i> Download sitemap.xml
+            </button>
+            <button id="copyBtn" class="btn-download" style="background: #34A853;">
+                <i class="fas fa-copy"></i> Copy XML Code
+            </button>
+        </div>
+
+        <div class="instructions">
+            <h4><i class="fas fa-info-circle"></i> How to submit to Google Search Console:</h4>
+            <ol>
+                <li>Download the sitemap.xml file using the button above</li>
+                <li>Upload it to the root directory of your website (e.g., https://dnyaghav.github.io/sitemap.xml)</li>
+                <li>Go to Google Search Console and select your property</li>
+                <li>Navigate to "Sitemaps" in the left sidebar</li>
+                <li>Enter "sitemap.xml" in the "Add a new sitemap" field</li>
+                <li>Click "Submit"</li>
+            </ol>
+        </div>
+
+        <div class="footer">
+            <p>This XML sitemap follows the standards from <a href="https://www.sitemaps.org/" target="_blank">sitemaps.org</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <!-- Sitemap for dnyaghav.github.io -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
@@ -50,4 +257,82 @@
     <priority>0.8</priority>
   </url>
 
-</urlset>
+</urlset>`;
+            
+            const blob = new Blob([xmlContent], { type: 'application/xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'sitemap.xml';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sitemap for dnyaghav.github.io -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://dnyaghav.github.io/</loc>
+    <lastmod>2025-09-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Tools Index -->
+  <url>
+    <loc>https://dnyaghav.github.io/tools/</loc>
+    <lastmod>2025-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- QR Code Maker -->
+  <url>
+    <loc>https://dnyaghav.github.io/tools/qr/index.html</loc>
+    <lastmod>2025-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- UPI to QR -->
+  <url>
+    <loc>https://dnyaghav.github.io/tools/upi/index.html</loc>
+    <lastmod>2025-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Instagram Unfollower Extension -->
+  <url>
+    <loc>https://dnyaghav.github.io/tools/ext/unfollower/index.html</loc>
+    <lastmod>2025-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Unsubscriber Extension -->
+  <url>
+    <loc>https://dnyaghav.github.io/tools/ext/unsubscriber/index.html</loc>
+    <lastmod>2025-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>`;
+            
+            navigator.clipboard.writeText(xmlContent).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
