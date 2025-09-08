@@ -1,369 +1,337 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Advanced QR Code Generator</title>
+<head>
+  <meta charset="utf-8" />
+  <title>Advanced QR Code Generator | Free Online Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Generate customizable QR codes for Text, URL, Wi-Fi, vCard, SMS, and Email. Add a logo, choose style, and download in PNG, JPEG, SVG, or WebP." />
+  <meta name="author" content="Mr. Aghav" />
 
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Icons (optional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- QR Styling -->
+  <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+</head>
+<body class="bg-light text-dark">
 
-    <!-- QRCode Styling (supports logos, shapes, etc.) -->
-    <script src="https://unpkg.com/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+<div class="container py-4">
 
-    <style>
-      body { background: #0f172a; color: #e2e8f0; }
-      .app-card { background: #111827; border: 1px solid #1f2937; }
-      .qr-wrap { min-height: 320px; display: grid; place-items: center; background: #0b1220; border: 1px dashed #334155; border-radius: .75rem; }
-      .form-label { font-weight: 600; }
-      .form-text { color: #9ca3af !important; }
-      .badge-soft { background: #0b1220; color: #a5b4fc; border: 1px solid #312e81; }
-      .btn-outline-light { border-color:#374151; }
-      .footer { color:#9ca3af; }
-      .range-output { min-width: 3ch; display:inline-block; text-align:right; }
-      a, .link-light { text-decoration: none; }
-    </style>
-  </head>
-  <body>
-    <div class="container py-4 py-md-5">
-      <div class="d-flex align-items-center justify-content-between mb-4">
-        <div>
-          <h1 class="h3 mb-1">Advanced QR Code Generator</h1>
-          <div class="small text-secondary">Single-file • Bootstrap 5 • Logo • Shapes • PNG/SVG • Error Correction</div>
-        </div>
-        <span class="badge badge-soft rounded-pill px-3 py-2">Client-side Only</span>
+  <!-- HERO -->
+  <div class="rounded-3 text-white p-4 mb-4" style="background: linear-gradient(90deg,#0ea5a4 0%,#3b82f6 100%);">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h1 class="h4 mb-1">Advanced QR Code Generator</h1>
+        <p class="mb-0">Text/URL, Wi-Fi, vCard, SMS, Email • Logo • ECC • Styles • Instant downloads</p>
       </div>
+      <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <span class="px-3 py-2 rounded-pill fw-semibold shadow-sm">🚀 Free • No Signup</span>
+      </div>
+    </div>
+  </div>
 
-      <div class="row g-4">
-        <!-- Left: Controls -->
-        <div class="col-12 col-lg-6">
-          <div class="card app-card p-3 p-md-4">
-            <ul class="nav nav-pills mb-3" id="dataTabs" role="tablist">
-              <li class="nav-item" role="presentation"><button class="nav-link active" id="tab-text" data-bs-toggle="pill" data-bs-target="#pane-text" type="button" role="tab">Text / URL</button></li>
-              <li class="nav-item" role="presentation"><button class="nav-link" id="tab-wifi" data-bs-toggle="pill" data-bs-target="#pane-wifi" type="button" role="tab">Wi‑Fi</button></li>
-              <li class="nav-item" role="presentation"><button class="nav-link" id="tab-vcard" data-bs-toggle="pill" data-bs-target="#pane-vcard" type="button" role="tab">vCard</button></li>
-              <li class="nav-item" role="presentation"><button class="nav-link" id="tab-sms" data-bs-toggle="pill" data-bs-target="#pane-sms" type="button" role="tab">SMS</button></li>
-              <li class="nav-item" role="presentation"><button class="nav-link" id="tab-email" data-bs-toggle="pill" data-bs-target="#pane-email" type="button" role="tab">Email</button></li>
-            </ul>
+  <div class="row g-4 align-items-stretch">
+    <!-- LEFT -->
+    <div class="col-lg-7 d-flex">
+      <div class="card shadow-sm w-100 h-100">
+        <div class="card-body">
 
-            <div class="tab-content" id="dataTabsContent">
-              <!-- Text / URL -->
-              <div class="tab-pane fade show active" id="pane-text" role="tabpanel" aria-labelledby="tab-text">
-                <div class="mb-3">
-                  <label class="form-label" for="textContent">Text or URL</label>
-                  <textarea id="textContent" class="form-control" rows="3" placeholder="https://example.com or any text"></textarea>
-                  <div class="form-text">Anything you type here becomes the QR payload.</div>
-                </div>
-              </div>
+          <!-- Tabs -->
+          <ul class="nav nav-tabs mb-3" id="qrTab" role="tablist">
+            <li class="nav-item"><button class="nav-link active" id="tab-text" data-bs-toggle="tab" data-bs-target="#pane-text" type="button">Text / URL</button></li>
+            <li class="nav-item"><button class="nav-link" id="tab-wifi" data-bs-toggle="tab" data-bs-target="#pane-wifi" type="button">Wi-Fi</button></li>
+            <li class="nav-item"><button class="nav-link" id="tab-vcard" data-bs-toggle="tab" data-bs-target="#pane-vcard" type="button">vCard</button></li>
+            <li class="nav-item"><button class="nav-link" id="tab-sms" data-bs-toggle="tab" data-bs-target="#pane-sms" type="button">SMS</button></li>
+            <li class="nav-item"><button class="nav-link" id="tab-email" data-bs-toggle="tab" data-bs-target="#pane-email" type="button">Email</button></li>
+          </ul>
 
-              <!-- WiFi -->
-              <div class="tab-pane fade" id="pane-wifi" role="tabpanel" aria-labelledby="tab-wifi">
-                <div class="row g-3">
-                  <div class="col-md-6"><label class="form-label" for="wifiSsid">SSID</label><input id="wifiSsid" class="form-control" placeholder="Network name" /></div>
-                  <div class="col-md-6"><label class="form-label" for="wifiPass">Password</label><input id="wifiPass" class="form-control" placeholder="Password" /></div>
-                  <div class="col-md-6">
-                    <label class="form-label" for="wifiAuth">Security</label>
-                    <select id="wifiAuth" class="form-select">
-                      <option value="WPA">WPA/WPA2/WPA3</option>
-                      <option value="WEP">WEP</option>
-                      <option value="nopass">Open (no password)</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6 d-flex align-items-end">
-                    <div class="form-check mt-3">
-                      <input class="form-check-input" type="checkbox" id="wifiHidden" />
-                      <label class="form-check-label" for="wifiHidden">Hidden network</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- vCard -->
-              <div class="tab-pane fade" id="pane-vcard" role="tabpanel" aria-labelledby="tab-vcard">
-                <div class="row g-3">
-                  <div class="col-md-6"><label class="form-label" for="vFirst">First name</label><input id="vFirst" class="form-control" /></div>
-                  <div class="col-md-6"><label class="form-label" for="vLast">Last name</label><input id="vLast" class="form-control" /></div>
-                  <div class="col-md-6"><label class="form-label" for="vPhone">Phone</label><input id="vPhone" class="form-control" placeholder="+91 98765 43210" /></div>
-                  <div class="col-md-6"><label class="form-label" for="vEmail">Email</label><input id="vEmail" class="form-control" placeholder="you@example.com" /></div>
-                  <div class="col-12"><label class="form-label" for="vOrg">Company</label><input id="vOrg" class="form-control" /></div>
-                  <div class="col-12"><label class="form-label" for="vTitle">Title</label><input id="vTitle" class="form-control" /></div>
-                  <div class="col-12"><label class="form-label" for="vAddr">Address</label><input id="vAddr" class="form-control" /></div>
-                  <div class="col-12"><label class="form-label" for="vUrl">Website</label><input id="vUrl" class="form-control" placeholder="https://" /></div>
-                </div>
-                <div class="form-text mt-2">Encodes a vCard 3.0 contact.</div>
-              </div>
-
-              <!-- SMS -->
-              <div class="tab-pane fade" id="pane-sms" role="tabpanel" aria-labelledby="tab-sms">
-                <div class="row g-3">
-                  <div class="col-md-6"><label class="form-label" for="smsTo">To (Phone)</label><input id="smsTo" class="form-control" placeholder="+91..." /></div>
-                  <div class="col-12"><label class="form-label" for="smsMsg">Message</label><textarea id="smsMsg" class="form-control" rows="2"></textarea></div>
-                </div>
-              </div>
-
-              <!-- Email -->
-              <div class="tab-pane fade" id="pane-email" role="tabpanel" aria-labelledby="tab-email">
-                <div class="row g-3">
-                  <div class="col-md-6"><label class="form-label" for="emTo">To</label><input id="emTo" class="form-control" placeholder="you@example.com" /></div>
-                  <div class="col-md-6"><label class="form-label" for="emSubject">Subject</label><input id="emSubject" class="form-control" /></div>
-                  <div class="col-12"><label class="form-label" for="emBody">Body</label><textarea id="emBody" class="form-control" rows="2"></textarea></div>
-                </div>
-              </div>
+          <div class="tab-content">
+            <!-- Text / URL -->
+            <div class="tab-pane fade show active" id="pane-text" role="tabpanel">
+              <label class="form-label">Text or URL</label>
+              <textarea id="textContent" class="form-control" rows="3" placeholder="Enter text or a link"></textarea>
             </div>
 
-            <hr class="my-4" />
-
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label class="form-label" for="size">Size <span class="range-output" id="sizeOut">300</span> px</label>
-                <input type="range" class="form-range" min="180" max="1024" step="10" id="size" value="300" />
-              </div>
-              <div class="col-md-6">
-                <label class="form-label" for="margin">Margin <span class="range-output" id="marginOut">10</span> px</label>
-                <input type="range" class="form-range" min="0" max="40" step="1" id="margin" value="10" />
-              </div>
-              <div class="col-md-6">
-                <label class="form-label" for="ecc">Error Correction</label>
-                <select id="ecc" class="form-select">
-                  <option value="L">L (7%)</option>
-                  <option value="M" selected>M (15%)</option>
-                  <option value="Q">Q (25%)</option>
-                  <option value="H">H (30%)</option>
+            <!-- Wi-Fi -->
+            <div class="tab-pane fade" id="pane-wifi" role="tabpanel">
+              <div class="mb-2"><input id="wifiSsid" class="form-control" placeholder="SSID (Network name)" /></div>
+              <div class="mb-2"><input id="wifiPass" class="form-control" placeholder="Password" /></div>
+              <div class="mb-2">
+                <select id="wifiAuth" class="form-select">
+                  <option value="WPA">WPA/WPA2/WPA3</option>
+                  <option value="WEP">WEP</option>
+                  <option value="nopass">Open</option>
                 </select>
               </div>
-              <div class="col-md-6">
-                <label class="form-label">Dot Style</label>
-                <select id="dotStyle" class="form-select">
-                  <option value="square">Square</option>
-                  <option value="dots">Dots</option>
-                  <option value="rounded">Rounded</option>
-                  <option value="extra-rounded">Extra Rounded</option>
-                </select>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label" for="fg">Foreground</label>
-                <input type="color" id="fg" class="form-control form-control-color" value="#111827" />
-              </div>
-              <div class="col-md-6">
-                <label class="form-label" for="bg">Background</label>
-                <input type="color" id="bg" class="form-control form-control-color" value="#ffffff" />
-              </div>
-              <div class="col-md-6">
-                <label class="form-label" for="logo">Logo (PNG/JPG/SVG)</label>
-                <input class="form-control" type="file" id="logo" accept="image/*,.svg" />
-                <div class="form-text">Optional center logo overlay.</div>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label" for="logoSize">Logo Size <span class="range-output" id="logoOut">0.25</span></label>
-                <input type="range" class="form-range" min="0" max="0.5" step="0.01" id="logoSize" value="0.25" />
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="wifiHidden" />
+                <label class="form-check-label" for="wifiHidden">Hidden network</label>
               </div>
             </div>
 
-            <div class="d-flex gap-2 flex-wrap mt-3">
-              <button class="btn btn-primary" id="btnGenerate">Generate</button>
-              <button class="btn btn-outline-light" id="btnRefresh" title="Re-render with current options">Refresh</button>
-              <div class="vr d-none d-md-block"></div>
-              <button class="btn btn-success" id="btnDownloadPng">Download PNG</button>
-              <button class="btn btn-success" id="btnDownloadSvg">Download SVG</button>
-              <button class="btn btn-outline-light" id="btnCopy">Copy to Clipboard</button>
-              <button class="btn btn-outline-danger ms-auto" id="btnClear">Clear</button>
+            <!-- vCard -->
+            <div class="tab-pane fade" id="pane-vcard" role="tabpanel">
+              <div class="mb-2"><input id="vFirst" class="form-control" placeholder="First name" /></div>
+              <div class="mb-2"><input id="vLast" class="form-control" placeholder="Last name" /></div>
+              <div class="mb-2"><input id="vPhone" class="form-control" placeholder="Phone" /></div>
+              <div class="mb-2"><input id="vEmail" class="form-control" placeholder="Email" /></div>
+              <div class="mb-2"><input id="vOrg" class="form-control" placeholder="Company" /></div>
+              <div class="mb-2"><input id="vTitle" class="form-control" placeholder="Title" /></div>
+              <div class="mb-2"><input id="vAddr" class="form-control" placeholder="Address" /></div>
+              <div class="mb-2"><input id="vUrl" class="form-control" placeholder="Website (https://)" /></div>
             </div>
-          </div>
-        </div>
 
-        <!-- Right: Preview -->
-        <div class="col-12 col-lg-6">
-          <div class="card app-card p-3 p-md-4 h-100">
-            <div class="qr-wrap mb-3">
-              <div id="qr"></div>
+            <!-- SMS -->
+            <div class="tab-pane fade" id="pane-sms" role="tabpanel">
+              <div class="mb-2"><input id="smsTo" class="form-control" placeholder="Phone number" /></div>
+              <div class="mb-2"><textarea id="smsMsg" class="form-control" rows="2" placeholder="Message"></textarea></div>
             </div>
-            <div class="small footer">
-              Tip: Use <span class="text-light">H</span> error correction when adding big logos. Always test your codes with multiple scanners.
+
+            <!-- Email -->
+            <div class="tab-pane fade" id="pane-email" role="tabpanel">
+              <div class="mb-2"><input id="emTo" class="form-control" placeholder="Recipient" /></div>
+              <div class="mb-2"><input id="emSubject" class="form-control" placeholder="Subject" /></div>
+              <div class="mb-2"><textarea id="emBody" class="form-control" rows="2" placeholder="Body"></textarea></div>
             </div>
           </div>
+
+          <hr class="my-3" />
+
+          <!-- Options -->
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label">Size</label>
+              <select id="size" class="form-select">
+                <option value="300" selected>300 x 300</option>
+                <option value="600">600 x 600</option>
+                <option value="900">900 x 900</option>
+                <option value="1200">1200 x 1200</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Margin</label>
+              <input type="number" id="margin" class="form-control" value="10" min="0" max="50" />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Error Correction</label>
+              <select id="ecc" class="form-select">
+                <option value="L">L</option>
+                <option value="M" selected>M</option>
+                <option value="Q">Q</option>
+                <option value="H">H</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">QR Style</label>
+              <select id="qrStyle" class="form-select">
+                <option value="square">Square</option>
+                <option value="dots" selected>Dots</option>
+                <option value="rounded">Rounded</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Logo Size</label>
+              <input type="range" id="logoSize" class="form-range" min="0.1" max="0.5" step="0.05" value="0.3" />
+            </div>
+            <div class="col-12">
+              <label class="form-label">Custom Logo (optional)</label>
+              <input type="file" id="logoUpload" class="form-control" />
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <div class="text-center mt-4 footer">Built with ❤️ using Bootstrap & qr-code-styling. Works entirely offline after first load.</div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      // --- Helpers to build payloads ---
-      function escapeWifi(text = "") {
-        return String(text).replace(/([\\;,:\"]) /g, '\\$1').replace(/"/g, '\\"');
-      }
-      function buildWifi({ ssid, pass, auth, hidden }) {
-        const p = pass || "";
-        const h = hidden ? ";H:true" : "";
-        return `WIFI:T:${auth};S:${escapeWifi(ssid)};P:${escapeWifi(p)}${auth==='nopass'?'':""}${h};;`;
-      }
-      function buildVCard(v) {
-        const lines = [
-          "BEGIN:VCARD",
-          "VERSION:3.0",
-          `N:${v.last||''};${v.first||''};;;`,
-          `FN:${[v.first||'', v.last||''].filter(Boolean).join(' ')}`,
-          v.org ? `ORG:${v.org}` : null,
-          v.title ? `TITLE:${v.title}` : null,
-          v.phone ? `TEL;TYPE=CELL:${v.phone}` : null,
-          v.email ? `EMAIL:${v.email}` : null,
-          v.addr ? `ADR;TYPE=HOME:;;${v.addr};;;;` : null,
-          v.url ? `URL:${v.url}` : null,
-          "END:VCARD"
-        ].filter(Boolean);
-        return lines.join("\n");
-      }
-      function buildSMS(to, msg) {
-        const u = new URLSearchParams({ body: msg||"" }).toString();
-        return `SMSTO:${to||''}:${msg||''}`; // many scanners support SMSTO schema
-      }
-      function buildEmail(to, subject, body) {
-        const qp = new URLSearchParams();
-        if (subject) qp.set('subject', subject);
-        if (body) qp.set('body', body);
-        return `mailto:${to||''}${qp.toString()?'?'+qp.toString():''}`;
-      }
+    <!-- RIGHT -->
+    <div class="col-lg-5 d-flex">
+      <div class="card shadow-sm w-100 h-100">
+        <div class="card-body text-center d-flex flex-column">
+          <h6 class="mb-1">Preview</h6>
+          <p class="text-muted small mb-2" id="sizeInfo">Selected size: 300 x 300 px</p>
 
-      // --- State ---
-      const el = {
-        text: document.getElementById('textContent'),
-        wifi: { ssid: document.getElementById('wifiSsid'), pass: document.getElementById('wifiPass'), auth: document.getElementById('wifiAuth'), hidden: document.getElementById('wifiHidden') },
-        v: { first: document.getElementById('vFirst'), last: document.getElementById('vLast'), phone: document.getElementById('vPhone'), email: document.getElementById('vEmail'), org: document.getElementById('vOrg'), title: document.getElementById('vTitle'), addr: document.getElementById('vAddr'), url: document.getElementById('vUrl') },
-        sms: { to: document.getElementById('smsTo'), msg: document.getElementById('smsMsg') },
-        email: { to: document.getElementById('emTo'), subject: document.getElementById('emSubject'), body: document.getElementById('emBody') },
-        size: document.getElementById('size'), sizeOut: document.getElementById('sizeOut'),
-        margin: document.getElementById('margin'), marginOut: document.getElementById('marginOut'),
-        ecc: document.getElementById('ecc'),
-        dotStyle: document.getElementById('dotStyle'),
-        fg: document.getElementById('fg'), bg: document.getElementById('bg'),
-        logo: document.getElementById('logo'), logoSize: document.getElementById('logoSize'), logoOut: document.getElementById('logoOut'),
-        qr: document.getElementById('qr'),
-        btnGenerate: document.getElementById('btnGenerate'),
-        btnRefresh: document.getElementById('btnRefresh'),
-        btnPng: document.getElementById('btnDownloadPng'),
-        btnSvg: document.getElementById('btnDownloadSvg'),
-        btnCopy: document.getElementById('btnCopy'),
-        btnClear: document.getElementById('btnClear')
-      };
+          <!-- Fixed preview 300x300, centered, overflow-hidden; QR scales inside -->
+          <div class="mx-auto bg-white rounded shadow-sm p-3 overflow-hidden d-flex justify-content-center align-items-center"
+               style="width:300px; height:300px;">
+            <div id="qrWrap"
+                 class="w-100 h-100 d-flex justify-content-center align-items-center"
+                 style="transform-origin:center center;"></div>
+          </div>
 
-      // Output mirrors
-      el.size.addEventListener('input', () => el.sizeOut.textContent = el.size.value);
-      el.margin.addEventListener('input', () => el.marginOut.textContent = el.margin.value);
-      el.logoSize.addEventListener('input', () => el.logoOut.textContent = el.logoSize.value);
+          <p class="mt-2"><span class="badge bg-light text-dark" id="livePayload">Payload preview</span></p>
 
-      // QR instance
-      let qr = new QRCodeStyling({
-        width: parseInt(el.size.value, 10),
-        height: parseInt(el.size.value, 10),
-        data: "",
-        margin: parseInt(el.margin.value, 10),
-        qrOptions: {
-          typeNumber: 0,
-          mode: "Byte",
-          errorCorrectionLevel: el.ecc.value
-        },
-        // Appearance
-        dotsOptions: { type: el.dotStyle.value, color: el.fg.value },
-        backgroundOptions: { color: el.bg.value },
-        imageOptions: { crossOrigin: "anonymous", imageSize: parseFloat(el.logoSize.value) }
-      });
-      qr.append(el.qr);
+          <hr />
+          <h6 class="mb-2">Download</h6>
+          <div class="d-flex flex-wrap justify-content-center gap-2">
+            <button class="btn btn-sm btn-primary rounded-pill" onclick="downloadQR('png')">PNG</button>
+            <button class="btn btn-sm btn-success rounded-pill" onclick="downloadQR('jpeg')">JPEG</button>
+            <button class="btn btn-sm btn-warning rounded-pill" onclick="downloadQR('svg')">SVG</button>
+            <button class="btn btn-sm btn-danger rounded-pill" onclick="downloadQR('webp')">WebP</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      // Read file as dataURL
-      function fileToDataURL(file) {
-        return new Promise((res, rej) => {
-          const fr = new FileReader();
-          fr.onload = () => res(fr.result);
-          fr.onerror = rej;
-          fr.readAsDataURL(file);
-        });
-      }
+  <footer class="text-center text-muted mt-4 small">Built by Mr. Aghav • Free QR Generator Tool</footer>
+</div>
 
-      let logoData = null;
-      el.logo.addEventListener('change', async () => {
-        if (el.logo.files && el.logo.files[0]) {
-          logoData = await fileToDataURL(el.logo.files[0]);
-        } else {
-          logoData = null;
-        }
-      });
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-      function currentPayload() {
-        const active = document.querySelector('#dataTabs .nav-link.active')?.id;
-        switch (active) {
-          case 'tab-wifi':
-            return buildWifi({ ssid: el.wifi.ssid.value, pass: el.wifi.pass.value, auth: el.wifi.auth.value, hidden: el.wifi.hidden.checked });
-          case 'tab-vcard':
-            return buildVCard({ first: el.v.first.value, last: el.v.last.value, phone: el.v.phone.value, email: el.v.email.value, org: el.v.org.value, title: el.v.title.value, addr: el.v.addr.value, url: el.v.url.value });
-          case 'tab-sms':
-            return buildSMS(el.sms.to.value, el.sms.msg.value);
-          case 'tab-email':
-            return buildEmail(el.email.to.value, el.email.subject.value, el.email.body.value);
-          default:
-            return el.text.value || '';
-        }
-      }
+<script>
+  // ---------- Helpers ----------
+  function sanitizeFilename(name) {
+    return name
+      .replace(/^https?:\/\//i, "")   // strip protocol
+      .replace(/^www\./i, "")         // strip www.
+      .replace(/[^a-z0-9\-]+/gi, "_") // keep letters, numbers, hyphen; others -> _
+      .replace(/_+/g, "_")            // collapse multiple _
+      .replace(/^_+|_+$/g, "");       // trim
+  }
 
-      async function renderQR() {
-        const size = parseInt(el.size.value, 10);
-        const margin = parseInt(el.margin.value, 10);
-        const ecc = el.ecc.value;
-        const dotStyle = el.dotStyle.value;
-        const fg = el.fg.value;
-        const bg = el.bg.value;
-        const imgSize = parseFloat(el.logoSize.value);
+  function buildWifi({ ssid, pass, auth, hidden }) {
+    return `WIFI:T:${auth};S:${ssid};P:${pass}${hidden ? ";H:true" : ""};;`;
+  }
+  function buildVCard(v) {
+    return `BEGIN:VCARD
+VERSION:3.0
+N:${v.last||""};${v.first||""};;;
+FN:${[v.first,v.last].filter(Boolean).join(" ")}
+${v.org?`ORG:${v.org}`:""}
+${v.title?`TITLE:${v.title}`:""}
+${v.phone?`TEL:${v.phone}`:""}
+${v.email?`EMAIL:${v.email}`:""}
+${v.addr?`ADR:;;${v.addr}`:""}
+${v.url?`URL:${v.url}`:""}
+END:VCARD`.trim();
+  }
+  function buildSMS(to, msg) { return `SMSTO:${to}:${msg}`; }
+  function buildEmail(to, subject, body) {
+    const qp = [];
+    if (subject) qp.push(`subject=${encodeURIComponent(subject)}`);
+    if (body) qp.push(`body=${encodeURIComponent(body)}`);
+    return `mailto:${to}${qp.length ? "?" + qp.join("&") : ""}`;
+  }
 
-        const update = {
-          width: size,
-          height: size,
-          data: currentPayload(),
-          margin,
-          qrOptions: { errorCorrectionLevel: ecc },
-          dotsOptions: { type: dotStyle, color: fg },
-          backgroundOptions: { color: bg },
-          imageOptions: { imageSize: imgSize }
-        };
-        if (logoData) update.image = logoData; else update.image = null;
-        await qr.update(update);
-      }
+  function currentPayload() {
+    const active = document.querySelector('#qrTab .nav-link.active').id;
+    switch (active) {
+      case "tab-wifi":  return buildWifi({ ssid: wifiSsid.value, pass: wifiPass.value, auth: wifiAuth.value, hidden: wifiHidden.checked });
+      case "tab-vcard": return buildVCard({ first: vFirst.value, last: vLast.value, phone: vPhone.value, email: vEmail.value, org: vOrg.value, title: vTitle.value, addr: vAddr.value, url: vUrl.value });
+      case "tab-sms":   return buildSMS(smsTo.value, smsMsg.value);
+      case "tab-email": return buildEmail(emTo.value, emSubject.value, emBody.value);
+      default:          return textContent.value;
+    }
+  }
 
-      el.btnGenerate.addEventListener('click', renderQR);
-      el.btnRefresh.addEventListener('click', renderQR);
-      document.getElementById('dataTabs').addEventListener('click', () => setTimeout(renderQR, 100));
+  // ---------- QR instance ----------
+  let currentLogo = null;
+  const qr = new QRCodeStyling({
+    width: 300,
+    height: 300,
+    data: "",
+    margin: 10,
+    qrOptions: { errorCorrectionLevel: "M" },
+    dotsOptions: { type: "dots", color: "#000" },
+    backgroundOptions: { color: "#fff" }
+  });
+  qr.append(document.getElementById("qrWrap"));
 
-      el.btnPng.addEventListener('click', async () => {
-        await renderQR();
-        qr.download({ name: 'qr-code', extension: 'png' });
-      });
-      el.btnSvg.addEventListener('click', async () => {
-        await renderQR();
-        qr.download({ name: 'qr-code', extension: 'svg' });
-      });
-      el.btnCopy.addEventListener('click', async () => {
-        await renderQR();
-        try {
-          const blob = await qr.getRawData('png');
-          await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]);
-          alert('Copied QR PNG to clipboard!');
-        } catch (e) {
-          alert('Copy failed in this browser. Download instead.');
-        }
-      });
-      el.btnClear.addEventListener('click', () => {
-        el.text.value = '';
-        ['ssid','pass'].forEach(k => el.wifi[k].value='');
-        el.v.first.value = el.v.last.value = el.v.phone.value = el.v.email.value = '';
-        el.v.org.value = el.v.title.value = el.v.addr.value = el.v.url.value = '';
-        el.sms.to.value = el.sms.msg.value = '';
-        el.email.to.value = el.email.subject.value = el.email.body.value = '';
-        logoData = null; el.logo.value = '';
-        renderQR();
-      });
+  // ---------- Update preview ----------
+  function updateQR() {
+    const sizeVal = parseInt(document.getElementById("size").value) || 300;
+    const marginVal = parseInt(document.getElementById("margin").value) || 10;
+    const eccVal = document.getElementById("ecc").value;
+    const styleVal = document.getElementById("qrStyle").value;
+    const logoSizeVal = parseFloat(document.getElementById("logoSize").value) || 0.3;
+    const data = currentPayload();
 
-      // Initial demo value
-      el.text.value = 'https://example.com/?ref=qr';
-      renderQR();
-    </script>
-  </body>
+    // Update info labels
+    document.getElementById("sizeInfo").textContent = `Selected size: ${sizeVal} x ${sizeVal} px`;
+    document.getElementById("livePayload").textContent = data ? (data.length > 90 ? data.slice(0, 90) + "..." : data) : "Payload preview";
+
+    // Update QR
+    qr.update({
+      width: sizeVal,
+      height: sizeVal,
+      margin: marginVal,
+      data,
+      qrOptions: { errorCorrectionLevel: eccVal },
+      dotsOptions: { type: styleVal, color: "#000" },
+      image: currentLogo,
+      imageOptions: { crossOrigin: "anonymous", imageSize: logoSizeVal }
+    });
+
+    // Scale canvas into fixed 300x300 preview (no overflow)
+    const scale = Math.min(1, 300 / sizeVal);
+    document.getElementById("qrWrap").style.transform = `scale(${scale})`;
+  }
+
+  // ---------- Download (dynamic safe filenames incl. size) ----------
+  function downloadQR(ext) {
+    const sizeVal = parseInt(document.getElementById("size").value) || 300;
+    let filename = "qr-code";
+    const active = document.querySelector('#qrTab .nav-link.active').id;
+
+    if (active === "tab-wifi") {
+      filename = wifiSsid.value ? `wifi-${wifiSsid.value}` : "wifi-qr";
+    } else if (active === "tab-vcard") {
+      const namePart = [vFirst.value, vLast.value].filter(Boolean).join("-");
+      filename = namePart ? `vcard-${namePart}` : "vcard-qr";
+    } else if (active === "tab-sms") {
+      filename = smsTo.value ? `sms-${smsTo.value}` : "sms-qr";
+    } else if (active === "tab-email") {
+      filename = emTo.value ? `email-${emTo.value}` : "email-qr";
+    } else {
+      filename = textContent.value ? textContent.value.slice(0, 60) : "text-qr";
+    }
+
+    filename = sanitizeFilename(filename) + `-${sizeVal}x${sizeVal}`;
+
+    qr.download({
+      extension: ext,
+      width: sizeVal,
+      height: sizeVal,
+      name: filename
+    });
+  }
+
+  // ---------- Logo upload ----------
+  document.getElementById("logoUpload").addEventListener("change", (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) { currentLogo = null; updateQR(); return; }
+    const reader = new FileReader();
+    reader.onload = () => { currentLogo = reader.result; updateQR(); };
+    reader.readAsDataURL(file);
+  });
+
+  // ---------- Random default link on refresh only ----------
+  (function setRandomDefaultOnLoad(){
+    const defaults = [
+      "https://www.instagram.com/mr.aghav",
+      "https://www.youtube.com/@dnyaghav",
+      "https://dnyaghav.github.io/"
+    ];
+    const idx = Math.floor(Math.random() * defaults.length);
+    const textarea = document.getElementById("textContent");
+    textarea.value = defaults[idx];
+  })();
+
+  // ---------- Event bindings ----------
+  // update on any input change
+  document.querySelectorAll("input, textarea, select").forEach(el => {
+    el.addEventListener("input", updateQR);
+  });
+  // update when switching tabs
+  document.querySelectorAll('#qrTab .nav-link').forEach(el => {
+    el.addEventListener('shown.bs.tab', updateQR, { once: false });
+  });
+
+  // Initial render
+  updateQR();
+</script>
+</body>
 </html>
