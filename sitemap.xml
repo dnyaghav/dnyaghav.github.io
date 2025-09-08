@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
-<sitemapindex xmlns="http://www.google.com/schemas/sitemap/0.84">
-  <sitemap>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
     <loc>https://dnyaghav.github.io/</loc>
-  </sitemap>
-  <sitemap>
+  </url>
+  <url>
     <loc>https://dnyaghav.github.io/tools/</loc>
-  </sitemap>
-  <sitemap>
+  </url>
+  <url>
     <loc>https://dnyaghav.github.io/tools/qr/index.html</loc>
-  </sitemap>
-  <sitemap>
+  </url>
+  <url>
     <loc>https://dnyaghav.github.io/tools/upi/index.html</loc>
-  </sitemap>
-  <sitemap>
+  </url>
+  <url>
     <loc>https://dnyaghav.github.io/tools/ext/unfollower/index.html</loc>
-  </sitemap>
-  <sitemap>
+  </url>
+  <url>
     <loc>https://dnyaghav.github.io/tools/ext/unsubscriber/index.html</loc>
-  </sitemap>
-</sitemapindex>
+  </url>
+</urlset>
