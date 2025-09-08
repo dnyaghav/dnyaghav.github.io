@@ -1,68 +1,52 @@
-// smartnav.js — Bootstrap 5 bottom navigation (auto from page links)
+// smartnav.js — Bootstrap 5 breadcrumb navigation from URL
 (function () {
-  const MAX_ITEMS = 6; // how many links to show
+  function buildBreadcrumb() {
+    const path = window.location.pathname
+      .replace(/\/index\.html?$/, "") // remove index.html
+      .replace(/^\/+|\/+$/g, ""); // trim slashes
 
-  function norm(u) {
-    try {
-      const url = new URL(u, location.href);
-      return url.pathname.replace(/index\\.html?$/i, "") || "/";
-    } catch {
-      return u;
-    }
-  }
+    if (!path) return; // hide on homepage
 
-  function build() {
-    const current = norm(location.href);
+    const parts = path.split("/");
+    const breadcrumb = document.createElement("nav");
+    breadcrumb.setAttribute("aria-label", "breadcrumb");
+    breadcrumb.className = "fixed-bottom bg-light border-top";
 
-    // collect unique links
-    const links = Array.from(document.querySelectorAll("a[href]"))
-      .map((a) => ({ el: a, href: a.getAttribute("href") }))
-      .filter(({ href }) => href && !href.startsWith("#") && !/^mailto:|tel:/i.test(href));
+    const ol = document.createElement("ol");
+    ol.className = "breadcrumb m-2";
 
-    const seen = new Set();
-    const items = [];
-    for (const { el, href } of links) {
-      const u = new URL(href, location.href);
-      const p = norm(u.href);
-      if (seen.has(p)) continue;
-      seen.add(p);
+    // Home link
+    const liHome = document.createElement("li");
+    liHome.className = "breadcrumb-item";
+    liHome.innerHTML = `<a href="/">Home</a>`;
+    ol.appendChild(liHome);
 
-      const text = (el.textContent || "").trim() || p;
-      items.push({ href: u.href, path: p, text });
-      if (items.length >= MAX_ITEMS) break;
-    }
-
-    // build Bootstrap nav
-    const nav = document.createElement("nav");
-    nav.className = "navbar navbar-expand bg-dark navbar-dark fixed-bottom";
-    nav.innerHTML = `
-      <div class="container-fluid justify-content-center">
-        <ul class="navbar-nav gap-3" id="smartNavList"></ul>
-      </div>
-    `;
-
-    const ul = nav.querySelector("#smartNavList");
-
-    for (const item of items) {
+    // Other parts
+    let cumulative = "";
+    parts.forEach((part, i) => {
+      cumulative += "/" + part;
       const li = document.createElement("li");
-      li.className = "nav-item";
+      li.className = "breadcrumb-item";
 
-      const a = document.createElement("a");
-      a.className = "nav-link";
-      if (item.path === current) a.classList.add("active");
-      a.href = item.href;
-      a.textContent = item.text;
+      const label = part.charAt(0).toUpperCase() + part.slice(1);
 
-      li.appendChild(a);
-      ul.appendChild(li);
-    }
+      if (i === parts.length - 1) {
+        li.classList.add("active");
+        li.setAttribute("aria-current", "page");
+        li.textContent = label;
+      } else {
+        li.innerHTML = `<a href="${cumulative}/">${label}</a>`;
+      }
+      ol.appendChild(li);
+    });
 
-    document.body.appendChild(nav);
+    breadcrumb.appendChild(ol);
+    document.body.appendChild(breadcrumb);
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", build, { once: true });
+    document.addEventListener("DOMContentLoaded", buildBreadcrumb, { once: true });
   } else {
-    build();
+    buildBreadcrumb();
   }
 })();
