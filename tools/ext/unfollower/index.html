@@ -2,98 +2,124 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Bulk Unfollower Chrome Extension - Instagram Tool by Mr.Aghav</title>
+  <title>Bulk Unfollower for Instagram - Chrome Extension by Mr.Aghav</title>
 
   <!-- Basic Meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Bulk Unfollower Chrome Extension by Mr.Aghav — safely unfollow Instagram accounts in bulk with configurable intervals, limits and breaks. Free, lightweight, and privacy-respecting." />
-  <meta name="keywords" content="Instagram unfollower, bulk unfollow, unfollow tool, Chrome extension for Instagram, Instagram cleanup, Mr.Aghav, social media management, unfollow Instagram, followers cleanup, Instagram automation, best unfollower extension 2025" />
+  <meta name="description" content="Safely unfollow Instagram accounts in bulk with smart intervals, breaks & limits. Free Chrome extension by Mr.Aghav.">
   <meta name="author" content="Mr.Aghav">
-  <meta name="robots" content="index, follow, max-snippet:200, max-image-preview:large">
-  <meta name="language" content="en">
-  <meta name="revisit-after" content="7 days">
   <meta name="theme-color" content="#0d6efd">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Bulk Unfollower - Chrome Extension by Mr.Aghav">
-  <meta property="og:description" content="Safely unfollow Instagram accounts in bulk. Free Chrome extension by Mr.Aghav with interval controls, limits and breaks to reduce account risk.">
+  <meta property="og:description" content="Safely unfollow Instagram accounts in bulk. Free, smart & privacy-friendly extension.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://dnyaghav.github.io/ext/mraghav-icon-128.png">
-  <meta property="og:url" content="https://dnyaghav.github.io/bulkunfollower.html">
+  <meta property="og:image" content="https://dnyaghav.github.io/tools/ext/unfollower/mraghav-icon-128.png">
+  <meta property="og:url" content="https://dnyaghav.github.io/tools/ext/unfollower/index.html">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@dnyaghav">
   <meta name="twitter:title" content="Bulk Unfollower for Instagram - by Mr.Aghav">
-  <meta name="twitter:description" content="Safely unfollow Instagram accounts in bulk with breaks & limits. Free tool by Mr.Aghav.">
-  <meta name="twitter:image" content="https://dnyaghav.github.io/ext/mraghav-icon-128.png">
+  <meta name="twitter:description" content="Unfollow in bulk with breaks & limits. Free tool by Mr.Aghav.">
+  <meta name="twitter:image" content="https://dnyaghav.github.io/tools/ext/unfollower/mraghav-icon-128.png">
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://dnyaghav.github.io/bulkunfollower.html">
+  <link rel="canonical" href="https://dnyaghav.github.io/tools/ext/unfollower/index.html">
 
   <!-- Favicons -->
-  <link rel="icon" type="image/png" href="https://dnyaghav.github.io/ext/mraghav-icon-48.png">
-  <link rel="apple-touch-icon" href="https://dnyaghav.github.io/ext/mraghav-icon-128.png">
+  <link rel="icon" type="image/png" href="https://dnyaghav.github.io/tools/ext/unfollower/mraghav-icon-48.png">
+  <link rel="apple-touch-icon" href="https://dnyaghav.github.io/tools/ext/unfollower/mraghav-icon-128.png">
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
-    body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { font-family: 'Inter', 'Segoe UI', sans-serif; background: #fdfdfd; color: #333; scroll-behavior: smooth; }
     header.hero {
       background: linear-gradient(135deg, #0d6efd, #6610f2);
       color: #fff;
-      padding: 4rem 1rem;
-      border-radius: 0 0 2rem 2rem;
+      padding: 5rem 1rem 4rem;
       text-align: center;
-      margin-bottom: 3rem;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
-    .hero h1 { font-weight: 700; }
-    .hero p { font-size: 1.2rem; }
-    .section-title { margin-top: 3rem; margin-bottom: 1.5rem; font-weight: bold; color: #0d6efd; text-align:center; }
-    .screenshot-placeholder { width: 100%; height: 220px; border: 2px dashed #ccc; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 0.9rem; margin-bottom: 1.5rem; background-color: #fff; }
-    footer { background-color: #212529; color: #bbb; padding: 2rem 1rem; margin-top: 4rem; border-radius: 1rem 1rem 0 0; }
+    header.hero img { width: 100px; margin-bottom: 1rem; }
+    header.hero h1 { font-weight: 700; font-size: 2.8rem; }
+    header.hero p { font-size: 1.2rem; max-width: 680px; margin: 0 auto 1.5rem; }
+    .btn-download { font-size: 1.2rem; padding: 0.8rem 2rem; font-weight: 600; }
+    .section-title { text-align: center; font-weight: 700; margin: 4rem 0 2rem; color: #0d6efd; }
+    .features .card { border: none; border-radius: 1rem; transition: transform 0.2s; }
+    .features .card:hover { transform: translateY(-5px); }
+    .screenshot-placeholder {
+      background: #f8f9fa; border: 2px dashed #ccc; height: 180px;
+      display: flex; justify-content: center; align-items: center;
+      border-radius: 12px; color: #666; font-size: 0.9rem;
+    }
+    .faq .accordion-button { font-weight: 600; }
+    .donation img { max-width: 200px; }
+    footer { background: #212529; color: #aaa; padding: 2rem 1rem; text-align: center; margin-top: 4rem; }
     footer a { color: #0d6efd; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <header class="hero">
-    <h1>🎉 Bulk Unfollower Extension</h1>
-    <p>Safely unfollow Instagram accounts in bulk with full control. Free tool by <strong>Mr.Aghav</strong>.</p>
-    <a href="https://dnyaghav.github.io/tools/ext/unfollower/Bulk_Unfollower_for_Instagram_v_5.0.0_by_Mr.Aghav.zip" class="btn btn-light btn-lg mt-3" download>⬇ Download Now</a>
+    <img src="https://dnyaghav.github.io/tools/ext/unfollower/mraghav-icon-128.png" alt="Extension Logo">
+    <h1>Bulk Unfollower for Instagram</h1>
+    <p>Unfollow multiple accounts safely with custom intervals, unfollow limits, and smart breaks.  
+    Free • lightweight • privacy-first.</p>
+    <a href="https://dnyaghav.github.io/tools/ext/unfollower/Bulk_Unfollower_for_Instagram_v_5.0.0_by_Mr.Aghav.zip"
+       class="btn btn-light btn-download shadow" download>⬇ Download Extension</a>
   </header>
 
-  <div class="container">
+  <main class="container">
 
-    <!-- 1. Welcome + Donation -->
-    <div class="text-center mb-5">
-      <h2 class="fw-bold text-success">Welcome!</h2>
-      <p class="lead">This Chrome Extension helps you manage your Instagram following list quickly and safely.</p>
-      <h5 class="mt-4">❤️ Support My Work</h5>
-      <p class="text-muted">Fuel the code — support the creator!</p>
-      <img src="https://dnyaghav.github.io/ext/mraghav-donation.svg" alt="Donate QR" width="180" height="180" class="rounded shadow-sm border border-1 mb-3">
-      <div class="d-flex justify-content-center gap-3">
-        <a href="https://www.youtube.com/@dnyaghav" target="_blank" class="btn btn-danger">YouTube</a>
-        <a href="https://www.instagram.com/mr.aghav/" target="_blank" class="btn btn-primary">Instagram</a>
+    <!-- About -->
+    <h2 class="section-title">👋 Welcome</h2>
+    <section class="text-center mb-5">
+      <p class="lead">This extension helps you clean up your Instagram following list safely and easily.  
+      Unlike risky automation tools, it gives you **full control** over how fast and how many accounts you unfollow.</p>
+    </section>
+
+    <!-- Features -->
+    <h2 class="section-title">✨ Features</h2>
+    <div class="row g-4 features">
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100 text-center p-3">
+          <h5>Custom Intervals</h5>
+          <p>Set delay between unfollows to avoid Instagram detection and keep your account safe.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100 text-center p-3">
+          <h5>Unfollow Limit</h5>
+          <p>Control how many accounts are unfollowed per cycle — stay within safe daily limits.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100 text-center p-3">
+          <h5>Smart Breaks</h5>
+          <p>Automatic pauses between cycles mimic human behavior for added safety.</p>
+        </div>
       </div>
     </div>
 
-    <!-- 2. Installation Guide -->
-    <h3 class="section-title">⚡ Installation Guide</h3>
+    <!-- Installation -->
+    <h2 class="section-title">⚡ Installation Guide</h2>
     <div class="row g-4">
       <div class="col-md-6">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <h5 class="card-title">Chromium Browsers</h5>
+            <h5 class="card-title">Chromium Browsers (Chrome, Edge, Brave)</h5>
             <ol>
-              <li>Download & extract the ZIP.</li>
+              <li>Download & extract the ZIP file above.</li>
               <li>Go to <code>chrome://extensions/</code>.</li>
-              <li>Enable Developer Mode.</li>
-              <li>Click <strong>Load unpacked</strong> and select folder.</li>
-              <li>Extension appears in toolbar 🎉</li>
+              <li>Enable <strong>Developer Mode</strong>.</li>
+              <li>Click <strong>Load unpacked</strong> and select the folder.</li>
+              <li>Extension icon appears in your toolbar 🎉</li>
             </ol>
           </div>
         </div>
@@ -105,60 +131,76 @@
             <ol>
               <li>Go to <code>about:debugging#/runtime/this-firefox</code>.</li>
               <li>Click <strong>Load Temporary Add-on</strong>.</li>
-              <li>Select <code>manifest.json</code>.</li>
-              <li>Works until Firefox restarts.</li>
+              <li>Select <code>manifest.json</code> inside the extracted folder.</li>
+              <li>Extension works until Firefox restarts.</li>
             </ol>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 3. How to Use -->
-    <h3 class="section-title">📖 How to Use</h3>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body text-center">
-            <h5>Step 1</h5>
-            <p>Open Instagram → go to your Following list.</p>
-            <div class="screenshot-placeholder">Following Page</div>
+    <!-- FAQ -->
+    <h2 class="section-title">❓ FAQ</h2>
+    <div class="accordion faq mb-5" id="faqAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+            Is this extension safe?
+          </button>
+        </h2>
+        <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes ✅ — it does not store your data or require login. All actions run locally in your browser with delays you set.
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body text-center">
-            <h5>Step 2</h5>
-            <p>Click extension icon → Configure Interval, Limit, Break Duration.</p>
-            <div class="screenshot-placeholder">Extension Settings</div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+            Can Instagram ban me for using it?
+          </button>
+        </h2>
+        <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            As long as you use realistic intervals and limits, the risk is very low. Avoid running it for hours non-stop.
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body text-center">
-            <h5>Step 3</h5>
-            <p>Click Start ▶ to begin unfollowing safely.</p>
-            <div class="screenshot-placeholder">In Action</div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">
+            Does it work on mobile?
+          </button>
+        </h2>
+        <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            No — Chrome extensions only work on desktop browsers (Chrome, Edge, Brave, etc.).
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 4. YouTube Video -->
-    <h3 class="section-title">▶ Watch Tutorial</h3>
-    <div class="ratio ratio-16x9 shadow-sm mb-5">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Bulk Unfollower Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+    <!-- Donation -->
+    <h2 class="section-title">❤️ Support the Project</h2>
+    <section class="donation text-center">
+      <p>Fuel the code — support the creator!</p>
+      <img src="https://dnyaghav.github.io/tools/ext/unfollower/mraghav-donation.svg" alt="Donate QR" class="rounded shadow border mb-3">
+      <div class="d-flex justify-content-center gap-3">
+        <a href="https://www.youtube.com/@dnyaghav" target="_blank" class="btn btn-danger">YouTube</a>
+        <a href="https://www.instagram.com/mr.aghav/" target="_blank" class="btn btn-primary">Instagram</a>
+      </div>
+    </section>
 
-  </div>
+  </main>
 
   <!-- Footer -->
-  <footer class="text-center">
+  <footer>
     <p class="mb-1">Made with ❤️ by <strong>Mr.Aghav</strong></p>
-    <p class="small">Version 1.2.0 • Updated 2025-09-04 | <a href="https://dnyaghav.github.io/bulkunfollower.html">GitHub Page</a></p>
+    <p class="small">Version 5.0.0 • Updated 2025-09-04 | 
+      <a href="https://dnyaghav.github.io/tools/ext/unfollower/">Project Page</a></p>
   </footer>
 
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
