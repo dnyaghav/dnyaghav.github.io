@@ -14,17 +14,30 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       transition: 0.3s;
     }
+
+    /* Center fewer cards on large screens */
+    @media (min-width: 992px) {
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+      .card-container .col-lg-3 {
+        flex: 0 0 auto;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container py-5">
     <h1 class="mb-4 text-center">Explore Destinations</h1>
 
-    <!-- Flexible Grid: 2 cards on mobile, more on larger screens -->
-    <div class="row row-cols-2 g-4">
+    <!-- Responsive grid with minimum 4 per row on large screens -->
+    <div class="row row-cols-2 row-cols-lg-4 g-4 card-container justify-content-center">
 
       <!-- Kashmir Card -->
-      <div class="col">
+      <div class="col col-lg-3">
         <a href="kashmir.html" class="card-link">
           <div class="card h-100">
             <img src="https://placehold.co/600x400/EEE/31343C?font=open-sans&text=Kashmir" class="card-img-top" alt="Kashmir">
@@ -37,7 +50,7 @@
       </div>
 
       <!-- Kerala Card -->
-      <div class="col">
+      <div class="col col-lg-3">
         <a href="kerala.html" class="card-link">
           <div class="card h-100">
             <img src="https://placehold.co/600x400/EEE/31343C?font=open-sans&text=Kerala" class="card-img-top" alt="Kerala">
@@ -50,7 +63,7 @@
       </div>
 
       <!-- Gujarat Card -->
-      <div class="col">
+      <div class="col col-lg-3">
         <a href="gujarat.html" class="card-link">
           <div class="card h-100">
             <img src="https://placehold.co/600x400/EEE/31343C?font=open-sans&text=Gujarat" class="card-img-top" alt="Gujarat">
