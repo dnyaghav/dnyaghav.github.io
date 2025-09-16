@@ -1,5 +1,5 @@
-# Hi there, I'm Dnyaghav! 👋
-
+# Hi there, I'm Dnyaneshwar Aghav ! 👋
+# DNYAGHAV
 ![Profile Banner](https://i.ibb.co/PvQ3SYdz/dnyaghav.jpg)
 
 ![Profile Views](https://komarev.com/ghpvc/?username=dnyaghav&label=Profile%20Views&color=0e75b6&style=flat)
