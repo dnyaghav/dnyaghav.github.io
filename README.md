@@ -1,6 +1,6 @@
 # Hi there, I'm Dnyaghav! 👋
 
-![Profile Banner](https://i.ibb.co/pRh855d/19227988-1959845087570830-8368703961909166080-n.jpg)
+![Profile Banner](https://i.ibb.co/PvQ3SYdz/dnyaghav.jpg)
 
 ## 🚀 About Me
 
