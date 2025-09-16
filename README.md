@@ -2,6 +2,8 @@
 
 ![Profile Banner](https://i.ibb.co/PvQ3SYdz/dnyaghav.jpg)
 
+![Profile Views](https://komarev.com/ghpvc/?username=dnyaghav&label=Profile%20Views&color=0e75b6&style=flat)
+
 ## 🚀 About Me
 
 I'm a passionate **Web Developer** with a strong focus on **Python**, **Machine Learning**, and the modern web stack (**HTML, CSS, JavaScript, PHP**).  
@@ -30,6 +32,10 @@ I love building creative solutions, exploring the world of tech, and helping oth
 
 **Platforms:**  
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=flat&logo=android&logoColor=white)
+![iOS](https://img.shields.io/badge/iOS-000000?style=flat&logo=apple&logoColor=white)
+![Kali Linux](https://img.shields.io/badge/Kali%20Linux-557C94?style=flat&logo=kalilinux&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222?style=flat&logo=github&logoColor=white)
 
 ---
@@ -48,6 +54,16 @@ I love building creative solutions, exploring the world of tech, and helping oth
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white)](https://www.youtube.com/@dnyaghav)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white)](https://instagram.com/mr.aghav)
 [![Portfolio](https://img.shields.io/badge/Portfolio-000?style=flat&logo=github&logoColor=white)](https://dnyaghav.github.io/tools/upi/)
+
+---
+
+## 📊 GitHub Stats
+
+![Dnyaghav's GitHub Stats](https://github-readme-stats.vercel.app/api?username=dnyaghav&show_icons=true&theme=tokyonight)  
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=dnyaghav&layout=compact&theme=tokyonight)  
+
+![GitHub Streak](https://streak-stats.demolab.com/?user=dnyaghav&theme=tokyonight)  
 
 ---
 
